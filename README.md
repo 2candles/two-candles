@@ -1,12 +1,12 @@
 # 🕯️ 2Candles.com: Modern Next.js Website
 
-โปรเจ็กต์นี้คือการสร้างหน้าเว็บไซต์ 2Candles.com ขึ้นมาใหม่ โดยใช้ Next.js 14, TypeScript และ Tailwind CSS เน้นการออกแบบที่ทันสมัย (Modern), **Responsive** และการจัดการเนื้อหาด้วย **Markdown**
+โปรเจ็กต์นี้คือการสร้างหน้าเว็บไซต์ 2Candles.com ขึ้นมาใหม่ โดยใช้ **Next.js 15.5.4**, TypeScript และ Tailwind CSS เน้นการออกแบบที่ทันสมัย (Modern), **Responsive** และการจัดการเนื้อหาด้วย **Markdown**
 
 ## 🛠️ เทคโนโลยีและคุณสมบัติหลัก
 
-* **Framework:** Next.js 14 (App Router)
+* **Framework:** **Next.js 15.5.4 (App Router)**
 * **Language:** TypeScript
-* **Styling:** Tailwind CSS (พร้อม **@tailwindcss/typography** สำหรับเนื้อหา Markdown)
+* **Styling:** Tailwind CSS (พร้อม `@tailwindcss/typography` สำหรับเนื้อหา Markdown)
 * **Content Management:** **Markdown/Front Matter** (ใช้ `gray-matter`, `remark`, `remark-html`)
 * **Responsive:** รองรับทุกอุปกรณ์ (Mobile First) พร้อม **Hamburger Menu** บนจอขนาดเล็ก
 * **Deployment:** Vercel
@@ -34,13 +34,11 @@
 
 ### 1. ติดตั้ง Dependencies
 
-ตรวจสอบให้แน่ใจว่าคุณมี Node.js และ npm/yarn ติดตั้งอยู่ จากนั้นติดตั้งแพ็กเกจทั้งหมด:
+อัพเดทเวอร์ชัน Next.js เป็น 15.5.4 และติดตั้งแพ็กเกจอื่นๆ:
 
 ```bash
-# ติดตั้งทั้งหมดตามที่ระบุในคำแนะนำ
-npm install next react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer lucide-react
+# ติดตั้ง Next.js (เวอร์ชัน 15.5.4) และ Dependencies อื่นๆ
+npm install next@^15.5.4 react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer lucide-react
 npm install -D @tailwindcss/typography
 npm install gray-matter remark remark-html
 ```
-
-[CodeSpace](https://jubilant-happiness-jjwvjqjg7g7jc57g4.github.dev/?editor=web)
