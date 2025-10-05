@@ -1,5 +1,5 @@
 // components/Navbar.tsx
-'use client'; // จำเป็นต้องใช้ Client Component เพราะมีการใช้ State (useState)
+'use client'; 
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react'; 
@@ -13,14 +13,12 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // State สำหรับควบคุมเมนูมือถือ
+  const [isOpen, setIsOpen] = useState(false); 
 
-  // ฟังก์ชันสลับสถานะ
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   
-  // ฟังก์ชันปิดเมนูเมื่อคลิก Link
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -29,7 +27,6 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100"> 
         <nav className="container mx-auto max-w-7xl p-4 flex justify-between items-center">
             
-            {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-2 group" onClick={closeMenu}>
                 <span className="text-2xl font-extrabold text-blue-600 group-hover:text-blue-700 transition">🕯️</span>
                 <div className="text-xl font-bold text-gray-800">2Candles.com</div>
@@ -47,7 +44,6 @@ export default function Navbar() {
                     </Link>
                 ))}
                 
-                {/* Language Switch บน Desktop */}
                 <button className="text-sm font-medium text-gray-700 hover:text-blue-600 transition p-2 rounded-lg border border-transparent hover:border-blue-200 ml-4">
                     EN | TH
                 </button>
@@ -56,15 +52,15 @@ export default function Navbar() {
             {/* Hamburger Icon/Close Icon */}
             <button 
                 className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition"
-                onClick={toggleMenu} // เรียกใช้ฟังก์ชัน toggleMenu
-                aria-expanded={isOpen} // Accessibility
-                aria-label={isOpen ? 'Close menu' : 'Open menu'} // Accessibility
+                onClick={toggleMenu}
+                aria-expanded={isOpen}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
         </nav>
 
-        {/* Mobile Menu - ใช้ Conditional Rendering แทนการซ่อนด้วย max-h */}
+        {/* Mobile Menu - Conditional Rendering */}
         {isOpen && (
             <div 
                 className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-100 z-40 transition-opacity duration-300 ease-in-out animate-slide-down"
@@ -74,13 +70,12 @@ export default function Navbar() {
                         <Link 
                             key={item.name} 
                             href={item.href} 
-                            onClick={closeMenu} // ปิดเมนูเมื่อคลิก
+                            onClick={closeMenu} 
                             className="text-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 p-3 rounded-md transition"
                         >
                             {item.name}
                         </Link>
                     ))}
-                    {/* Language Switch บน Mobile */}
                     <button className="text-left text-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 p-3 rounded-md transition mt-2">
                         EN | TH
                     </button>

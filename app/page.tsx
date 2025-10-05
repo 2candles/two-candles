@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 // ------------------------------------------------------------------
-// Reusable Components
+// Reusable Components (คงเดิม)
 // ------------------------------------------------------------------
 
 interface SidebarCardProps {
@@ -28,7 +28,6 @@ interface PrimaryButtonProps {
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({ children, className = '', href = '#' }) => {
     const buttonClass = `w-full font-semibold py-3 rounded-lg shadow-md transition duration-300 ${className}`;
 
-    // ใช้ Link component ถ้ามี href
     if (href !== '#') {
         return (
             <Link href={href} className={`${buttonClass} text-center`}>
@@ -46,14 +45,14 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({ children, className = '',
 
 
 // ------------------------------------------------------------------
-// Main Page Layout
+// Main Page Layout (แก้ไข Sidebar ซ้าย)
 // ------------------------------------------------------------------
 
 export default function HomePage() {
     return (
         <div className="space-y-10">
 
-            {/* 1. Hero Section (Responsive) */}
+            {/* 1. Hero Section */}
             <section className="bg-gradient-to-r from-blue-50 to-blue-100 p-8 md:p-16 rounded-3xl shadow-2xl shadow-blue-200 text-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
                     สัพทาน <span className="text-blue-600">ธัมมทาน</span> ชินวุติ
@@ -69,11 +68,10 @@ export default function HomePage() {
                 </PrimaryButton>
             </section>
 
-            {/* 2. Three-Column Layout (3/6/3 - Responsive Grid) */}
+            {/* 2. Three-Column Layout (3/6/3) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
 
-                {/* 2.1. Sidebar ซ้าย (Sponsors) - md:col-span-3 */}
-                {/* ลบส่วน Login/Register ออก */}
+                {/* 2.1. Sidebar ซ้าย (Sponsors เท่านั้น) - md:col-span-3 */}
                 <aside className="md:col-span-3 space-y-6">
                     <SidebarCard title="SPONSORS">
                         <div className="h-40 md:h-64 bg-gray-100 flex items-center justify-center text-gray-500 rounded-lg border-dashed border-2 border-gray-300 text-sm">
@@ -104,7 +102,6 @@ export default function HomePage() {
                             <div>
                                 <h3 className="font-extrabold text-lg md:text-xl text-green-700">อ. จารันต์ รัตนกมล</h3>
                                 <p className="text-gray-600 mt-1">ศาสตร์เพื่อการมีชีวิตอย่างเข้าใจและถูกธรรม: อาหารอากาศและการเจริญสติ</p>
-                                {/* เชื่อมโยงไปที่ Dynamic Route ของ Markdown */}
                                 <Link href="/articles/article-1" className="text-blue-500 hover:text-blue-700 text-sm mt-2 inline-flex items-center">
                                     อ่านต่อ <ChevronRight size={16} />
                                 </Link>
