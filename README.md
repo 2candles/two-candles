@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🕯️ 2Candles.com: Modern Next.js Website
 
-## Getting Started
+โปรเจ็กต์นี้คือการสร้างหน้าเว็บไซต์ 2Candles.com ขึ้นมาใหม่ โดยใช้ Next.js 14, TypeScript และ Tailwind CSS เน้นการออกแบบที่ทันสมัย (Modern), **Responsive** และการจัดการเนื้อหาด้วย **Markdown**
 
-First, run the development server:
+## 🛠️ เทคโนโลยีและคุณสมบัติหลัก
+
+* **Framework:** Next.js 14 (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS (พร้อม **@tailwindcss/typography** สำหรับเนื้อหา Markdown)
+* **Content Management:** **Markdown/Front Matter** (ใช้ `gray-matter`, `remark`, `remark-html`)
+* **Responsive:** รองรับทุกอุปกรณ์ (Mobile First) พร้อม **Hamburger Menu** บนจอขนาดเล็ก
+* **Deployment:** Vercel
+
+## 🏗️ โครงสร้างและการนำทาง
+
+### Layout หลัก (3 คอลัมน์)
+
+เว็บไซต์ใช้โครงสร้างแบบ 3 คอลัมน์บน Desktop และปรับเป็น 1 คอลัมน์บน Mobile
+
+| ส่วนประกอบ | สัดส่วน (Desktop) | Component |
+| :--- | :--- | :--- |
+| **Navbar** | คงที่บนทุกหน้า | `components/Navbar.tsx` (พร้อม Hamburger Menu) |
+| **เนื้อหาหลัก** | 6/12 | `app/page.tsx` (Hero Section, บทความ) |
+| **Sidebar ซ้าย/ขวา** | 3/12 และ 3/12 | `app/page.tsx` (Login, Sponsors, ทำบุญ, กิจกรรม) |
+
+### Dynamic Content
+
+เนื้อหาบทความถูกจัดเก็บในรูปแบบ Markdown ภายใต้โฟลเดอร์ `content/` และแสดงผลผ่าน Dynamic Route:
+
+* **Logic:** `lib/markdown.ts`
+* **Display URL:** `/articles/[slug]` (เช่น `/articles/article-1`)
+
+## 🚀 การเริ่มต้นโปรเจ็กต์
+
+### 1. ติดตั้ง Dependencies
+
+ตรวจสอบให้แน่ใจว่าคุณมี Node.js และ npm/yarn ติดตั้งอยู่ จากนั้นติดตั้งแพ็กเกจทั้งหมด:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# ติดตั้งทั้งหมดตามที่ระบุในคำแนะนำ
+npm install next react react-dom typescript @types/react @types/node tailwindcss postcss autoprefixer lucide-react
+npm install -D @tailwindcss/typography
+npm install gray-matter remark remark-html
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[CodeSpace](https://jubilant-happiness-jjwvjqjg7g7jc57g4.github.dev/?editor=web)
