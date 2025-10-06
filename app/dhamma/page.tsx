@@ -1,71 +1,110 @@
-// app/dhamma/page.tsx
-import Link from 'next/link';
-import { BookOpen, Zap, TrendingUp } from 'lucide-react';
+// app/dhamma/page.tsx (อัปเดตทั้งหมด)
+'use client'; // ต้องใช้ 'use client' เพราะเราใช้ hooks
 
-// ข้อมูลตัวอย่าง (Dummy Data) สำหรับแสดงในหน้าสารบัญ
-const dhammaTopics = [
-  { 
-    title: 'หลักอริยมรรคมีองค์ 8', 
-    description: 'เส้นทางปฏิบัติเพื่อความพ้นทุกข์ที่พระพุทธเจ้าทรงค้นพบ', 
-    href: '/articles/noble-eightfold-path', 
-    icon: BookOpen 
-  },
-  { 
-    title: 'การเจริญสติในชีวิตประจำวัน', 
-    description: 'วิธีฝึกสติง่ายๆ ขณะเดิน ยืน นั่ง นอน และทำงาน', 
-    href: '/articles/daily-mindfulness', 
-    icon: Zap 
-  },
-  { 
-    title: 'ความสำคัญของการทำทาน', 
-    description: 'อานิสงส์ของการให้และเจตนาที่เป็นกุศล', 
-    href: '/articles/merit-of-dana', 
-    icon: TrendingUp 
-  },
+import { useRef, useState, useEffect } from 'react';
+import DharmaAudioPlayer from '@/components/DharmaAudioPlayer';
+
+interface DharmaTrack {
+    trackId: string;
+    titleTH: string;
+    titleEN: string;
+    audioSrc: string;
+}
+
+// ข้อมูลบทสวด (อัปเดต Path ของไฟล์เสียง)
+const dharmaTracks: DharmaTrack[] = [
+    { 
+        trackId: 'metta',
+        titleTH: 'กะระณียะเมตตะสุตตัง (บทสวดแผ่เมตตา)', 
+        titleEN: 'Karaniya Metta Sutta',
+        audioSrc: '/audio/Karaniya Metta Sutta.mp3' 
+    },
+    { 
+        trackId: 'khandha',
+        titleTH: 'ขันธปริตรคาถา (บทสวดป้องกันภัยจากอสรพิษ)', 
+        titleEN: 'Khandha Paritta Gatha',
+        audioSrc: '/audio/Kantaparitkata.mp3' 
+    },
 ];
 
 export default function DhammaPage() {
-  return (
-    <div className="space-y-12">
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-100 p-8 md:p-16 rounded-3xl shadow-2xl shadow-blue-200 text-center border-t-4 border-blue-600">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
-          ปัญญาและ<span className="text-blue-600">เส้นทางธรรม</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600">
-          รวบรวมหลักธรรมคำสอนที่ช่วยนำทางชีวิตสู่ความสงบและความสุขที่ยั่งยืน
-        </p>
-      </section>
+    // 1. เก็บอินสแตนซ์ของ HTML Audio Element
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    
+    // 2. สถานะสำหรับติดตาม ID ของเพลงที่กำลังเล่นอยู่
+    const [activeTrackId, setActiveTrackId] = useState<string | null>(null);
 
-      {/* Content Grid */}
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-100 pb-2">หัวข้อธรรมะหลัก</h2>
+    // สร้าง Audio Element เมื่อ Component Mount
+    useEffect(() => {
+        audioRef.current = new Audio();
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dhammaTopics.map((topic) => (
-            <Link 
-              key={topic.title} 
-              href={topic.href} 
-              className="p-6 bg-white border border-gray-100 rounded-xl shadow-lg hover:shadow-xl hover:border-blue-300 transition duration-300 flex flex-col space-y-3"
-            >
-              <topic.icon size={32} className="text-blue-500 mb-2" />
-              <h3 className="text-xl font-bold text-gray-800 hover:text-blue-600">{topic.title}</h3>
-              <p className="text-gray-600 text-sm flex-grow">{topic.description}</p>
-              <span className="text-sm font-semibold text-blue-500 mt-2 flex items-center">
-                อ่านบทความ &rarr;
-              </span>
-            </Link>
-          ))}
+        // เคลียร์ Audio Element เมื่อ Component Unmount เพื่อป้องกัน Memory Leak
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current = null;
+            }
+        };
+    }, []);
+
+    // ฟังก์ชันสำคัญ: จัดการการเล่นเพลงใหม่
+    const handlePlay = (track: DharmaTrack) => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        // 💡 Logic ควบคุม: หากมีเพลงกำลังเล่นอยู่ หรือ กำลังจะเล่นเพลงใหม่ ให้จัดการปิดเพลงเดิมก่อน
+        if (activeTrackId !== track.trackId) {
+            // 1. ตั้งค่า source ใหม่
+            audio.src = track.audioSrc;
+            
+            // 2. เล่นเพลง
+            audio.play()
+                 .then(() => setActiveTrackId(track.trackId))
+                 .catch(error => console.error("Error playing audio:", error));
+        } else {
+             // ถ้ากดปุ่มเพลงเดิมซ้ำ (แต่เราจะจัดการนี้ใน togglePlay ในคอมโพเนนต์ลูก)
+             // โค้ดนี้ไม่ควรจะถูกเรียกถ้า Logic ในคอมโพเนนต์ลูกถูกต้อง
+        }
+    };
+    
+    // ฟังก์ชัน: จัดการการหยุดเพลง
+    const handlePause = () => {
+        const audio = audioRef.current;
+        if (audio) {
+            audio.pause();
+            setActiveTrackId(null);
+        }
+    };
+
+    return (
+        <div className="py-10">
+            
+            <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-4">
+                เพลงธรรมะและบทสวด
+            </h1>
+            <p className="text-xl text-center text-gray-500 mb-12">
+                เสียงแห่งธรรมะนำทางสู่ความสงบและสติ
+            </p>
+
+            <div className="max-w-3xl mx-auto space-y-6">
+                {dharmaTracks.map((track) => (
+                    <DharmaAudioPlayer 
+                        key={track.trackId}
+                        {...track}
+                        
+                        // Pass สถานะและฟังก์ชันควบคุมไปยังคอมโพเนนต์ลูก
+                        isPlaying={activeTrackId === track.trackId}
+                        onPlay={() => handlePlay(track)} 
+                        onPause={handlePause}
+                    />
+                ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto mt-12 p-6 bg-green-50 border-l-4 border-green-400 rounded-lg">
+                <p className="text-sm text-gray-700 font-bold">
+                    ✅ สถานะ: ระบบการเล่นเสียงจริง (HTML Audio API) เปิดใช้งานแล้ว! 
+                </p>
+            </div>
         </div>
-        
-        {/* Call to Action/More Link */}
-        <div className="text-center mt-10">
-          <Link href="/articles" className="text-lg font-semibold text-gray-700 hover:text-blue-600 transition border-b border-gray-300 hover:border-blue-600 pb-1">
-            ดูบทความธรรมะทั้งหมด...
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }

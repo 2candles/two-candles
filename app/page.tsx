@@ -86,11 +86,11 @@ export default function HomePage() {
                     <section className="p-6 bg-white rounded-xl shadow-lg border-t-4 border-orange-500">
                         <h2 className="text-xl md:text-2xl font-bold text-orange-700 mb-4">ยินดีต้อนรับสู่ 2Candles.com</h2>
                         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-start">
-                            <img src="/placeholder-candle.jpg" alt="เทียนศักดิ์สิทธิ์" className="w-full md:w-1/3 h-auto object-cover rounded-lg shadow-md" />
+                            <img src="/2candles_041.jpg" alt="เทียนศักดิ์สิทธิ์" className="w-full md:w-1/3 h-auto object-cover rounded-lg shadow-md" />
                             <p className="text-gray-700 leading-relaxed">
-                                <span className="font-extrabold text-xl md:text-2xl text-orange-500">สวัสดีจ้า</span> ยินดีต้อนรับสู่เวปไซต์ซึ่งสร้างขึ้นตามเจตนารมณ์ของ ...
+                                <span className="font-extrabold text-xl md:text-2xl text-orange-500">"สวัสดีจ้า"</span> ยินดีต้อนรับสู่เวปไซต์ซึ่งสร้างขึ้นตามเจตนารมณ์ของ อาจารย์จัสติน รัตนมงคล
                                 <br /><br />
-                                วัตถุประสงค์หลักของเวปเพื่อให้อาจารย์จัสตินใช้เผยแผ่ ศาสตร์ต่างๆตามความตั้งใจอันดีของท่าน และใช้เป็นช่องทางสำหรับสื่อสารระหว่างอาจารย์และลูกศิษย์ อาจารย์จัสติน รัตนมงคล
+                                วัตถุประสงค์หลักของเวปเพื่อให้อาจารย์จัสตินใช้เผยแผ่ ศาสตร์ต่างๆตามความตั้งใจอันดีของท่าน และใช้เป็นช่องทางสำหรับสื่อสารระหว่างอาจารย์และลูกศิษย์
                                 <br /><br />
                                 บุญกุศลใดหากมีบังเกิดจากการจัดทำเวปไซต์นี้ เราขอน้อมถวายเป็นพุทธบูชา ธัมมะบูชา สังฆะบูชา ปะฏิปัตติบูชา
                             </p>
@@ -100,11 +100,22 @@ export default function HomePage() {
                     <section className="p-6 bg-white rounded-xl shadow-lg">
                         <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 border-b pb-2">ข่าวสารจากอาจารย์จัสติน และ ลูกศิษย์</h2>
                         <div className="flex items-start space-x-4">
-                            <img src="/placeholder-profile.jpg" alt="ภาพ อ. จารันต์" className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full shadow-md" />
+                            <img src="/_IMG_0007.jpg" alt="อ. จัสติน รัตนมงคล" className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full shadow-md" />
                             <div>
-                                <h3 className="font-extrabold text-lg md:text-xl text-green-700">อ. จารันต์ รัตนกมล</h3>
+                                <h3 className="font-extrabold text-lg md:text-xl text-green-700">อ. จัสติน รัตนมงคล</h3>
                                 <p className="text-gray-600 mt-1">ติดต่อ อาจารย์จัสติน เพื่อตรวจ "ต้นบุญ" หรือขอคำปรึกษา</p>
-                                <Link href="/articles/article-1" className="text-blue-500 hover:text-blue-700 text-sm mt-2 inline-flex items-center">
+                                <Link href="/contact" className="text-blue-500 hover:text-blue-700 text-sm mt-2 inline-flex items-center">
+                                    อ่านต่อ <ChevronRight size={16} />
+                                </Link>
+                            </div>
+                        </div>
+                        <br />
+                        <div className="flex items-start space-x-4">
+                            <img src="/2candles_041.jpg" alt="อ. จัสติน รัตนมงคล" className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full shadow-md" />
+                            <div>
+                                <h3 className="font-extrabold text-lg md:text-xl text-green-700">เพลงธรรมะ</h3>
+                                <p className="text-gray-600 mt-1">กะระณียะเมตตะสุตตัง ขันธปริตรคาถา</p>
+                                <Link href="/dhamma" className="text-blue-500 hover:text-blue-700 text-sm mt-2 inline-flex items-center">
                                     อ่านต่อ <ChevronRight size={16} />
                                 </Link>
                             </div>
