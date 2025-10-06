@@ -1,4 +1,4 @@
-// components/Navbar.tsx (โค้ดที่เอาปุ่มเปลี่ยนภาษาออกแล้ว)
+// components/Navbar.tsx (โค้ดฉบับสุดท้ายที่แก้ไขข้อผิดพลาด ARIA และ HTML)
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -8,9 +8,11 @@ const navItems = [
     { name: 'หน้าแรก', href: '/' },
     { name: 'ธรรมะ', href: '/dhamma' },
     { name: 'สุขภาพ', href: '/health' },
+    // 💡 เมนูใหม่
     { name: 'สมุนไพร', href: '/herbal' },
     { name: 'ศาสตร์', href: '/sciences' },
     { name: 'ครูบาอาจารย์', href: '/teachers' },
+    // เมนูเดิม
     { name: 'กิจกรรม', href: '/events' },
     { name: 'ติดต่อ', href: '/contact' },
 ];
@@ -46,14 +48,10 @@ export default function Navbar() {
                             {item.name}
                         </Link>
                     ))}
-
-                    {/* ❌ ลบส่วนปุ่มเปลี่ยนภาษา EN | TH ออกจาก Desktop */}
-                    {/* <button type="button" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition p-2 rounded-lg border border-transparent hover:border-blue-200 ml-4">
-                    EN | TH
-                </button> */}
+                    {/* ลบปุ่ม EN | TH ออกจาก Desktop แล้ว */}
                 </div>
 
-                {/* Hamburger Icon/Close Icon */}
+                {/* Hamburger Icon/Close Icon - ส่วนนี้ถูกแก้ไขให้ถูกต้องแล้ว */}
                 <button
                     type="button"
                     aria-expanded={isOpen ? 'true' : 'false'}
@@ -81,10 +79,7 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
-                        {/* ❌ ลบส่วนปุ่มเปลี่ยนภาษา EN | TH ออกจาก Mobile */}
-                        {/* <button type="button" className="text-left text-lg font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 p-3 rounded-md transition mt-2">
-                        EN | TH
-                    </button> */}
+                        {/* ลบปุ่ม EN | TH ออกจาก Mobile แล้ว */}
                     </div>
                 </div>
             )}
