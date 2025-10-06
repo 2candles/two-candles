@@ -15,8 +15,8 @@ interface EventTopic {
     year: number;
     date?: string; 
     title: string;
-    slug: string; 
-    icon: IconName; // ตอนนี้สามารถรับค่า 'BookOpen' ได้แล้ว
+    slug: string; // เช่น 'โหราศาตร์ภาคแรกรุ่นที่๒๑' หรือ 'event-tonbun'
+    icon: IconName; 
 }
 
 // Map ชื่อ Icon string ไปยัง Component จริง
@@ -26,39 +26,40 @@ const IconMap: Record<IconName, React.ElementType> = {
     MapPin: MapPin,
     GraduationCap: GraduationCap, 
     Building2: Building2,
-    BookOpen: BookOpen, // <--- เพิ่ม entry นี้
+    BookOpen: BookOpen, 
 };
 
 // ข้อมูลกิจกรรมทั้งหมด (รวบรวมและจัดประเภท Icon ตามเนื้อหา)
 const allEvents: EventTopic[] = [
     // กิจกรรมที่ไม่ระบุปีชัดเจน (ต้นบุญ)
-    { year: 9999, title: 'ต้นบุญ สถานที่ท่านทำบุญครั้งใหญ่ไว้', slug: 'ต้นบุญ', icon: 'MapPin' },
+    // *** อัปเดต slug เป็น 'event-tonbun' เพื่อชี้ไปที่ content/event-tonbun.md ***
+    { year: 9999, title: 'ต้นบุญ สถานที่ท่านทำบุญครั้งใหญ่ไว้', slug: 'event-tonbun', icon: 'MapPin' },
 
     // --- กิจกรรมปี ๒๕๕๔ (2011) ---
-    { year: 2554, date: '๒๑ สิงหาคม', title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๒๑ (วันอาทิตย์)', slug: 'โหราศาตร์ภาคแรกรุ่นที่๒๑', icon: 'GraduationCap' },
-    { year: 2554, date: '๒๙ มีนาคม', title: 'เชิญร่วมวางศิลาฤกษ์อุโบสถวัดศรีนคร จ.นครพนม', slug: 'วางศิลาฤกษ์อุโบสถวัดศรีนคร', icon: 'Building2' },
-    { year: 2554, date: 'มีนาคม', title: 'ขอเชิญร่วมเป็นเจ้าภาพสร้างพระประธาน ณ วัดศรีนคร', slug: 'สร้างพระประธานวัดศรีนคร', icon: 'Building2' },
-    { year: 2554, date: 'มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด (เลี้ยงพระ ๑๐๐)', slug: 'เลี้ยงพระ๑๐๐๒๕๕๔', icon: 'Users' },
-    { year: 2554, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๙', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๙', icon: 'GraduationCap' },
-    { year: 2554, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๘', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๘', icon: 'GraduationCap' },
+    { year: 2554, date: '๒๑ สิงหาคม', title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๒๑ (วันอาทิตย์)', slug: 'event-GraduationCap21', icon: 'GraduationCap' },
+    { year: 2554, date: '๒๙ มีนาคม', title: 'เชิญร่วมวางศิลาฤกษ์อุโบสถวัดศรีนคร จ.นครพนม', slug: 'event-sri-nakhon-foundation-stone', icon: 'Building2' },
+    { year: 2554, date: 'มีนาคม', title: 'ขอเชิญร่วมเป็นเจ้าภาพสร้างพระประธาน ณ วัดศรีนคร', slug: 'event-sri-nakhon-buddha-image', icon: 'Building2' },
+    { year: 2554, date: 'มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด (เลี้ยงพระ ๑๐๐)', slug: 'event-100monk2554', icon: 'Users' },
+    { year: 2554, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๙', slug: 'event-GraduationCap19', icon: 'GraduationCap' },
+    { year: 2554, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๘', slug: 'event-GraduationCap18', icon: 'GraduationCap' },
 
     // --- กิจกรรมปี ๒๕๕๓ (2010) ---
-    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๗', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๗', icon: 'GraduationCap' },
-    { year: 2553, title: 'งานปริวาสกรรม ณ. วัดสวนอธิษฐาน', slug: 'ปริวาสกรรม2553', icon: 'CalendarCheck' },
-    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๖', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๖', icon: 'GraduationCap' },
-    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๕', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๕', icon: 'GraduationCap' },
-    { year: 2553, title: 'คอลัมส์ อะไรในคอคนคัง', slug: 'อะไรในคอคนคัง', icon: 'BookOpen' }, // ใช้ BookOpen แทน
-    { year: 2553, date: '๑๑ มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด (เลี้ยงพระร้อย)', slug: 'เลี้ยงพระ๑๐๐๒๕๕๓', icon: 'Users' },
-    { year: 2553, title: 'เชิญทำบุญสร้างพระเสด็จย่าพิมพา', slug: 'สร้างพระเสด็จย่าพิมพา', icon: 'Building2' },
-    { year: 2553, title: 'หนังสือสวดมนต์วัดสวนอธิษฐาน, ความคืบหน้าในการดำเนินงาน', slug: 'หนังสือสวดมนต์วัดสวนอธิษฐาน', icon: 'BookOpen' },
-    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ 13', slug: 'โหราศาตร์ภาคแรกรุ่นที่๑๓', icon: 'GraduationCap' },
-    { year: 2553, date: '๑ มกราคม', title: 'วันคล้ายวันเกิดเป็นครูอาจารย์', slug: 'วันคล้ายวันเกิดเป็นครูอาจารย์', icon: 'Users' },
+    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๗', slug: 'event-GraduationCap17', icon: 'GraduationCap' },
+    { year: 2553, title: 'งานปริวาสกรรม ณ. วัดสวนอธิษฐาน', slug: 'event-parivas2553', icon: 'CalendarCheck' },
+    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๖', slug: 'event-GraduationCap16', icon: 'GraduationCap' },
+    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ ๑๕', slug: 'event-GraduationCap15', icon: 'GraduationCap' },
+    { year: 2553, title: 'คอลัมส์ อะไรในคอคนคัง', slug: 'event-superstar', icon: 'BookOpen' }, 
+    { year: 2553, date: '๑๑ มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด (เลี้ยงพระร้อย)', slug: 'event-100monk2553', icon: 'Users' },
+    { year: 2553, title: 'เชิญทำบุญสร้างพระเสด็จย่าพิมพา', slug: 'event-queen-pimpa', icon: 'Building2' },
+    { year: 2553, title: 'หนังสือสวดมนต์วัดสวนอธิษฐาน, ความคืบหน้าในการดำเนินงาน', slug: 'event-prayer-book', icon: 'BookOpen' },
+    { year: 2553, title: 'เปิดสอน โหราศาตร์ภาคแรก รุ่นที่ 13', slug: 'event-GraduationCap13', icon: 'GraduationCap' },
+    { year: 2553, date: '๑ มกราคม', title: 'วันคล้ายวันเกิดเป็นครูอาจารย์', slug: 'event-master-birthday', icon: 'Users' },
 
     // --- กิจกรรมปี ๒๕๕๒ (2009) ---
-    { year: 2552, date: '๑๗ ตุลาคม', title: 'บุญกฐินวัดสวนอธิษฐาน', slug: 'บุญกฐินวัดสวนอธิษฐาน', icon: 'CalendarCheck' },
-    { year: 2552, date: 'กรกฎาคม-สิงหาคม', title: 'งานปริวาสกรรมกลางปี ๒๕๕๒ ณ. วัดสวนอธิษฐานบารมี', slug: 'ปริวาสกรรม2552', icon: 'CalendarCheck' },
-    { year: 2552, date: 'มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด', slug: 'เลี้ยงพระ๑๐๐๒๕๕๒', icon: 'Users' },
-    { year: 2552, date: 'พฤษภาคม', title: 'ผ้าป่าสามัคคีสร้างวิหารประดิษฐานพระแก้วเขียวส่อง', slug: 'ผ้าป่าสามัคคีสร้างวิหาร', icon: 'Building2' },
+    { year: 2552, date: '๑๗ ตุลาคม', title: 'บุญกฐินวัดสวนอธิษฐาน', slug: 'event-kathin2552', icon: 'CalendarCheck' },
+    { year: 2552, date: 'กรกฎาคม-สิงหาคม', title: 'งานปริวาสกรรมกลางปี ๒๕๕๒ ณ. วัดสวนอธิษฐานบารมี', slug: 'event-parivas2552', icon: 'CalendarCheck' },
+    { year: 2552, date: 'มีนาคม', title: 'งานมุฑิตาจิตแด่พระอาจารย์อ๊อด', slug: 'event-100monk2552', icon: 'Users' },
+    { year: 2552, date: 'พฤษภาคม', title: 'ผ้าป่าสามัคคีสร้างวิหารประดิษฐานพระแก้วเขียวส่อง', slug: 'event-papa2552', icon: 'Building2' },
 ];
 
 
@@ -77,7 +78,10 @@ const groupedEvents = allEvents.reduce((acc, event) => {
 const sortedGroups = Object.keys(groupedEvents).sort((a, b) => {
     if (a === 'ต้นบุญ') return 1;
     if (b === 'ต้นบุญ') return -1;
-    return b.localeCompare(a);
+    // ใช้การแยกตัวเลขออกจาก "ปี พ.ศ. " เพื่อการเปรียบเทียบที่แม่นยำยิ่งขึ้น
+    const yearA = a.includes('พ.ศ.') ? parseInt(a.replace('ปี พ.ศ. ', ''), 10) : 0;
+    const yearB = b.includes('พ.ศ.') ? parseInt(b.replace('ปี พ.ศ. ', ''), 10) : 0;
+    return yearB - yearA;
 });
 
 
@@ -91,7 +95,10 @@ interface EventCardProps {
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const IconComponent = IconMap[event.icon];
-    const href = `/articles/${event.slug}`; // ลิงก์ไปยังหน้าเนื้อหา Markdown
+    
+    // ลิงก์ไปยังหน้าเนื้อหา Markdown
+    // href จะเป็น /articles/event-tonbun ซึ่งจะตรงกับ content/event-tonbun.md
+    const href = `/articles/${event.slug}`; 
 
     return (
         <Link
