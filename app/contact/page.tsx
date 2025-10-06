@@ -49,7 +49,7 @@ export default function ContactPage() {
                 {/* 2.2. อาจารย์จัสติน รัตนมงคล (Contact & Schedule) */}
                 <div className="p-8 bg-white border-2 border-indigo-200 rounded-xl shadow-2xl shadow-indigo-100 transition duration-300 space-y-6 lg:col-span-2">
                     <UserCheck size={40} className="text-indigo-600" />
-                    <h2 className="text-2xl font-extrabold text-gray-800 border-b pb-2 text-indigo-700">
+                    <h2 className="text-2xl font-extrabol border-b pb-2 text-indigo-700">
                         อ. จัสติน รัตนมงคล: ช่องทางติดต่อและปรึกษา
                     </h2>
 
