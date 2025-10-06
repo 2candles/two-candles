@@ -88,20 +88,22 @@ export default function HomePage() {
                         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-start">
                             <img src="/placeholder-candle.jpg" alt="เทียนศักดิ์สิทธิ์" className="w-full md:w-1/3 h-auto object-cover rounded-lg shadow-md" />
                             <p className="text-gray-700 leading-relaxed">
-                                <span className="font-extrabold text-xl md:text-2xl text-orange-500">วิถีชีวิต</span> คือเครื่องมืออันทรงพลังในการสร้างสรรค์ชีวิตที่ดีกว่าเดิม ...
+                                <span className="font-extrabold text-xl md:text-2xl text-orange-500">สวัสดีจ้า</span> ยินดีต้อนรับสู่เวปไซต์ซึ่งสร้างขึ้นตามเจตนารมณ์ของ ...
                                 <br /><br />
-                                เรามุ่งมั่นที่จะเผยแพร่ความรู้และปัญญา เพื่อความสุขและความสงบแก่ทุกชีวิตบนโลกใบนี้
+                                วัตถุประสงค์หลักของเวปเพื่อให้อาจารย์จัสตินใช้เผยแผ่ ศาสตร์ต่างๆตามความตั้งใจอันดีของท่าน และใช้เป็นช่องทางสำหรับสื่อสารระหว่างอาจารย์และลูกศิษย์ อาจารย์จัสติน รัตนมงคล
+                                <br /><br />
+                                บุญกุศลใดหากมีบังเกิดจากการจัดทำเวปไซต์นี้ เราขอน้อมถวายเป็นพุทธบูชา ธัมมะบูชา สังฆะบูชา ปะฏิปัตติบูชา
                             </p>
                         </div>
                     </section>
 
                     <section className="p-6 bg-white rounded-xl shadow-lg">
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 border-b pb-2">บทความเด่นวันนี้</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 border-b pb-2">ข่าวสารจากอาจารย์จัสติน และ ลูกศิษย์</h2>
                         <div className="flex items-start space-x-4">
                             <img src="/placeholder-profile.jpg" alt="ภาพ อ. จารันต์" className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full shadow-md" />
                             <div>
                                 <h3 className="font-extrabold text-lg md:text-xl text-green-700">อ. จารันต์ รัตนกมล</h3>
-                                <p className="text-gray-600 mt-1">ศาสตร์เพื่อการมีชีวิตอย่างเข้าใจและถูกธรรม: อาหารอากาศและการเจริญสติ</p>
+                                <p className="text-gray-600 mt-1">ติดต่อ อาจารย์จัสติน เพื่อตรวจ "ต้นบุญ" หรือขอคำปรึกษา</p>
                                 <Link href="/articles/article-1" className="text-blue-500 hover:text-blue-700 text-sm mt-2 inline-flex items-center">
                                     อ่านต่อ <ChevronRight size={16} />
                                 </Link>
