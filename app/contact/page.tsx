@@ -62,6 +62,7 @@ export default function ContactPage() {
                             </span>
                         </div>
                     </div>
+                    
 
                     {/* ช่องทางการติดต่อ */}
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
