@@ -55,10 +55,10 @@ export default function HomePage() {
             {/* 1. Hero Section */}
             <section className="bg-gradient-to-r from-blue-50 to-blue-100 p-8 md:p-16 rounded-3xl shadow-2xl shadow-blue-200 text-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
-                    สัพทาน <span className="text-blue-600">ธัมมทาน</span> ชินวุติ
+                    สพฺพทานํ <span className="text-blue-600">ธมฺมทานํ</span> ชินาติ
                 </h1>
                 <p className="text-lg md:text-xl text-gray-600 mb-8">
-                    เส้นทางสู่ความสงบและการชนะธรรมแห่งปวงชน
+                    การให้ธรรมะ ชนะการให้ทั้งปวง
                 </p>
                 <PrimaryButton
                     href="/learn"
